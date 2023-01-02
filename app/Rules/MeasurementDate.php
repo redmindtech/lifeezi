@@ -32,7 +32,7 @@ class MeasurementDate implements Rule
             return false;
         }
         if($value){
-            $measurement = Measurement::where('client_id',$this->client_id)->where('date', $value)->get();
+            $measurement = Measurement::where('client_id',$this->client_id)->where('measurement_date', $value)->get();
             if(count($measurement) > 0){
                 $this->message = 'The measurement date is already register.Please choose the another date.';
                 return false;

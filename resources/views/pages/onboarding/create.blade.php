@@ -50,8 +50,8 @@
                                  @endif
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="occupation" class="form-label">Job Nature </label>
-                                                   
+                                    <label for="occupation" class="form-label">Job Nature<a
+                                                    style="text-decoration: none;color:red">*</a></label>
                                     <input type="text"class="form-control" name="occupation" value="{{old('occupation') ?? ''}}"/>
                                  @if($errors->has('occupation'))
                                     <div class="error">{{ $errors->first('occupation') }}</div>

@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<div class="py-6" style="width: 100%;margin:0px;">
+<div class="py-6" style="width: 100%;margin:12px;">
         <div class="col-md-12">
             <div class="card bg-card">
                 <div class="card-body">

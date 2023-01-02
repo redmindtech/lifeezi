@@ -4,27 +4,36 @@
 <div class="card">
 <div class="card-body" style="height: auto;" >
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Plan Start Date</label>
         <p>{{ dateFormat($plan->plan_start_date) }}</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Plan End Date</label>
         <p>{{ dateFormat($plan->plan_end_date) }}</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Mail Send Date</label>
         <p>{{ dateFormat($plan->mail_send_date) }}</p>
-    </div> 
-</div>
-<div class="row">
-    <div class="col-md-4">
+    </div>
+    <div class="col-md-3">
         <label>Explanation Date</label>
         <p>{{ dateFormat($plan->explanation_date) }}</p>
     </div>
-    <div class="col-md-4">
+</div>
+<div class="row">
+    
+    <div class="col-md-3">
         <label>Objective</label>
         <p>{{ $plan->objective }}</p>
+    </div>
+    <div class="col-md-3">
+        <label>Activity</label>
+        <p>{{ $plan->exercise_routine }}</p>
+    </div> 
+     <div class="col-md-3">
+        <label>Comments</label>
+        <p>{{ $plan->comments }}</p>
     </div>
 <!--    <div class="col-md-4">-->
 <!--        <label>Wake Up Time</label>-->
@@ -50,26 +59,24 @@
 <!--        <label>Food Avoid</label>-->
 <!--        <p>{{ $plan->food_to_avoid }}</p>-->
 <!--    </div>-->
-    <div class="col-md-4">
-        <label>Comments</label>
-        <p>{{ $plan->comments }}</p>
-    </div>
-    <div class="col-md-4">
-        <label>Activity</label>
-        <p>{{ $plan->exercise_routine }}</p>
-    </div> 
 </div>
- @if($plan->plan_type)
- @foreach ($plan->plan_type as $plan_type )
+
+<hr>
+ @if($plan->plan_types)
+ @foreach ($plan->plan_types as $plan_type )
  <div class="row">
-       <div class="col-md-6">
+       <div class="col-md-3">
         <label>Meal Category</label>
         <p>{{ $plan_type->meal_category }}</p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
         <label>Food Details</label>
         <p>{{ $plan_type->food_details }}</p>
-    </div> 
+    </div>
+     <div class="col-md-3">
+        <label>Meal Time</label>
+        <p>{{ $plan_type->meal_time }}</p>
+    </div>
  </div>
  @endforeach
  @endif

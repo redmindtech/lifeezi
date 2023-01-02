@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<div class="py-6" style="width: 100%;margin:0px;">
+<div class="py-6" style="width: 100%;margin:12px;">
         <div class="col-md-12">
             <div class="card bg-card">
                 <div class="card-body">
@@ -44,11 +44,11 @@
                             <div class="row">
                                    <div class="col-md-4">
                                     <label for="client_conerns" class="form-label">Client Conerns</label>
-                                    <p>{{$review->client_conerns}}</p>
+                                    <p>{{$review->client_conern}}</p>
                                    </div>
                                 <div class="col-md-4">
                                     <label for="area_to_focus" class="form-label">Area To Focus</label>
-                                    <p>{{$review->area_to_focus}}</p>
+                                    <p>{{$review->area_need_to_focus}}</p>
                                 </div>
                                </div> 
                                @endif 

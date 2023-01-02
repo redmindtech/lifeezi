@@ -9,13 +9,16 @@ use App\Models\Client;
 use App\Models\MeasurementType;
 use Exception;
 use Yajra\DataTables\DataTables;
+use Illuminate\Http\Request;
 
 class MeasurementController extends Controller
 {
 
-    public function getData($onboarding = null) {
-        $client = Client::findOrFail($onboarding->client_id);
-        $measurements = Measurement::with('measurement_type')->where('client_id', $onboarding->client_id)->get();
+    public function getData($client_id) {
+        $client = Client::findOrFail($client_id);
+            $client->load(['summary', 'schedule_assement']);
+        $onboarding = Onboarding::where('client_id',$client_id)->first();
+        $measurements = Measurement::with('measurement_type')->where('client_id', $client_id)->get();
         return [
             'client' => $client,
             'onboarding' => $onboarding,
@@ -40,8 +43,7 @@ class MeasurementController extends Controller
     public function list(Client $client)
     {
         try{
-            $onboarding = Onboarding::where('client_id', $client->id)->first();
-            $data = $this->getData($onboarding);
+            $data = $this->getData($client->id);
             return view('pages.measurement.list',compact('data'));
         }catch(Exception $e) {
            info($e);
@@ -54,11 +56,11 @@ class MeasurementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( $onboarding)
+    public function create( $client)
     {
         try{
-            $onboarding = Onboarding::findOrFail($onboarding);
-            $data = $this->getData($onboarding);
+            $client = Client::findOrFail($client);
+            $data = $this->getData($client->id);
             return view('pages.measurement.create',compact('data'));
         }catch(Exception $e) {
            info($e);
@@ -110,8 +112,7 @@ class MeasurementController extends Controller
     public function show(Measurement $measurement)
     {
         try{
-            $onboarding = Onboarding::findOrFail($measurement->onboarding_id);
-            $data = $this->getData($onboarding);
+            $data = $this->getData($measurement->client_id);
             $options = MEASUREMENT;
             $measurement->load('measurement_type');
             return view('pages.measurement.show',compact('data','measurement','options'));
@@ -130,8 +131,7 @@ class MeasurementController extends Controller
     public function edit(Measurement $measurement)
     {
        try{
-            $onboarding = Onboarding::findOrFail($measurement->onboarding_id);
-            $data = $this->getData($onboarding);
+            $data = $this->getData($measurement->client_id);
             $measurement->load('measurement_type');
             return view('pages.measurement.edit',compact('data','measurement'));
         }catch(Exception $e) {
@@ -235,9 +235,9 @@ class MeasurementController extends Controller
             })->editColumn('plan', function ($client) {
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('measurement', function ($client) {
-                return '<a href="' . route('measurement.add', $client->onboarding->id) . '" class="btn btn-primary"><i class="fa fa-weight-scale"></i> </a>';
+                return '<a href="' . route('measurement.add', $client->id) . '" class="btn btn-primary  btn-sm"><i class="fa fa-weight-scale"></i> </a>';
             })->editColumn('view', function ($client) {
-                    return '<a href="' . route('measurement.list', $client) . '" class="btn btn-info"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('measurement.list', $client) . '" class="btn btn-info  btn-sm"><i class="fa fa-eye"></i> </a>';
             })
             ->rawColumns(['measurement','view'])
                 ->make(true);
@@ -261,11 +261,11 @@ class MeasurementController extends Controller
             })->editColumn('comments', function ($measurement) {
                 return $measurement->comments;
             })->editColumn('show', function ($measurement) {
-                return '<a href="' . route('measurement.show', $measurement) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('measurement.show', $measurement) . '" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>';
             })->editColumn('edit', function ($measurement) {
-                return '<a href="' . route('measurement.edit', $measurement) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                return '<a href="' . route('measurement.edit', $measurement) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
             })->editColumn('delete', function ($measurement) {
-                return '<div class="form-group" ><button class="btn btn-danger" onclick=deleteMeasurement('. $measurement->id .')  ><i class="fa fa-trash"></i></a></div>';
+                return '<div class="form-group" ><button class="btn btn-danger  btn-sm" onclick=deleteMeasurement('. $measurement->id .')  ><i class="fa fa-trash"></i></a></div>';
                   // return '<form method="POST"  onsubmit="return confirm("Are you sure want to delete the client?")" action="' . route('client.destroy',$client) .'">' . csrf_field() . method_field('DELETE') . '<div class="form-group"><button class="btn btn-danger" type="submit"><i class="fa fa-trash "></i></a></div></form> ';
                 
             })->rawColumns(['show', 'edit','delete'])
@@ -276,5 +276,3 @@ class MeasurementController extends Controller
         }
     }
 }
-
-

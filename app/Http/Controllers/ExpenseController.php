@@ -107,11 +107,11 @@ class ExpenseController extends Controller
             })->editColumn('paid_to', function ($client) {
                 return ucfirst($client->paid_to);
             })->editColumn('show', function ($client) {
-                return '<a href="' . route('expense.show', $client) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('expense.show', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
             })->editColumn('edit', function ($client) {
-                return '<a href="' . route('expense.edit', $client) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                return '<a href="' . route('expense.edit', $client) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
             })->editColumn('delete', function ($client) {
-                return '<div class="form-group" ><button class="btn btn-danger" onclick=deleteExpenses('. $client->id .') data-id="'. $client->id . '" ><i class="fa fa-trash"></i></a></div>';
+                return '<div class="form-group" ><button class="btn btn-danger btn-sm" onclick=deleteExpenses('. $client->id .') data-id="'. $client->id . '" ><i class="fa fa-trash"></i></a></div>';
                   // return '<form method="POST"  onsubmit="return confirm("Are you sure want to delete the client?")" action="' . route('client.destroy',$client) .'">' . csrf_field() . method_field('DELETE') . '<div class="form-group"><button class="btn btn-danger" type="submit"><i class="fa fa-trash "></i></a></div></form> ';
                 
             })->rawColumns(['show', 'edit','delete'])

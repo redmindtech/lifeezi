@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<div class="py-3" style="width: 100%;margin:0px;">
+<div class="py-6" style="width: 100%;margin:0px;">
         <div class="col-md-12">
             <div class="card bg-card">
                 <div class="card-body">
@@ -18,6 +18,9 @@
                     </div>
                     @include('include.client')
                     @include('include.onboarding')
+                    <div style="margin: 5px 0px">
+                      <div class="card">
+                       <div class="card-body" style="height: auto;" >
                    <div class="row">
                     <div class="col-md-12">
                         @if($uploadLab)
@@ -25,21 +28,21 @@
                             @csrf
                             <input type="hidden" style="display: none" name="client_id" value="{{ $data['client']['id']}}" />
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <label for="Name" class="form-label">Test Date</label>
                                     <p>{{ dateFormat($uploadLab->test_date)}}</p>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <label for="Name" class="form-label">Report Stage</label>
                                      <p>{{$uploadLab->report_stage}}</p>
                                 </div>
-                            </div>
-                            <div class="row">
-                                    <div class="col-md-6">
+                            <!--</div>-->
+                            <!--<div class="row">-->
+                                    <div class="col-md-3">
                                     <label for="Name" class="form-label">Upload Report</label>
                                     <p><a href="{{ url('/assets/uploads/' . $uploadLab->upload_lab)}}" download>Download</a></p>
                                 </div>
-                                   <div class="col-md-6">
+                                   <div class="col-md-3">
                                     <label for="Name" class="form-label">Next Test Date</label>
                                     <p>{{ dateFormat($uploadLab->next_test_date)}}</p>
                                 </div>
@@ -51,15 +54,15 @@
                                  <div class="card" style="margin: 5px 0" >
                                  <div class="card-body" style="height: auto;" >
                                     <div class="row">
-                                       <div class="col-md-4">
+                                       <div class="col-md-3">
                                          <label class="form-label">Report Type</label>
                                          <p>{{ $upload_lab_type->upload_type}}</p>
                                          </div>
-                                          <div class="col-md-4">
+                                          <div class="col-md-3">
                                            <label class="form-label">Value</label>
                                           <p>{{ $upload_lab_type->value }}</p>
                                           </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label class="form-label">Comments</label>
                                              <p>{{ $upload_lab_type->comments }}</p>
                                         </div>

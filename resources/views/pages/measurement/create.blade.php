@@ -24,7 +24,7 @@
                         <form enctype="multipart/form-data" onsubmit=handleSubmit() class="form-group" method="POST" action="{{ route('measurement.store')}}" >
                             @csrf
                             <input type="hidden" style="display: none" name="client_id" value="{{ $data['client']['id']}}" />
-                            <input type="hidden" style="display: none" name="onboarding_id" value="{{ $data['onboarding']['id']}}" />
+                            <input type="hidden" style="display: none" name="onboarding_id" value="{{ $data['onboarding']['id'] ?? null}}" />
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="Name" class="form-label">Measurement Date<a

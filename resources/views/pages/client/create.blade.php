@@ -111,10 +111,14 @@
                                 @endif
                                 </div>
                                 
-                                @if(old('reference_input') ?? null)
-                                <div id="reference_col_div" class="col-md-6">
-                    <label class="form-label">Reference Name<a style="text-decoration: none;color:red">*</a></label><input type="text" name="reference_input" class="form-control"  />
-                    </div>
+                                 @if(old('reference_input') ?? null)
+                                   <div id="reference_col_div" class="col-md-6">
+                                @if(old('reference') =="reference")
+                                   <label class="form-label">Reference Name<a style="text-decoration: none;color:red">*</a></label><input type="text" name="reference_input" class="form-control" value="{{old('reference_input') ?? ''}}" />
+                               @elseif(old('reference') =="others")                    
+                                     <label class="form-label">others<a style="text-decoration: none;color:red">*</a></label><input type="text" name="reference_input" class="form-control" value="{{old('reference_input') ?? ''}}" />
+                               @endif
+                                </div>
                       @if($errors->has('reference_input'))
                                     <div class="error">{{ $errors->first('reference_input') }}</div>
                                 @endif
@@ -155,12 +159,22 @@
 
            function onChangeReference() {
             let value = $('#reference').find(':selected').val();
-             if(value == 'reference') {
+             if(value == 'reference' ) {
+                $('#reference_col_div').remove();
                 $('#reference_div').append('<div id="reference_col_div" class="col-md-6">'
                     +'<label class="form-label">Reference Name<a style="text-decoration: none;color:red">*</a></label><input type="text" name="reference_input" class="form-control"  />'
                     +'</div>')
-             } else {
+                     
+             } 
+             else if(value == 'others') {
                 $('#reference_col_div').remove();
+                $('#reference_div').append('<div id="reference_col_div" class="col-md-6">'
+                    +'<label class="form-label">Others<a style="text-decoration: none;color:red">*</a></label><input type="text" name="reference_input"  class="form-control"  />'
+                    +'</div>')
+             }
+             else {
+                $('#reference_col_div').remove();
+               
              }
            }
           

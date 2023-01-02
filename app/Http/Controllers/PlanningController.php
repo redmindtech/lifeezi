@@ -262,9 +262,9 @@ class PlanningController extends Controller
             })->editColumn('plan', function ($client) {
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('planning', function ($client) {
-                return '<a href="' . route('planning.add', $client) . '" class="btn btn-primary"><i class="fa fa-ruler"></i> </a>';
+                return '<a href="' . route('planning.add', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-ruler"></i> </a>';
             })->editColumn('view', function ($client) {
-                    return '<a href="' . route('planning.list', $client) . '" class="btn btn-info"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('planning.list', $client) . '" class="btn btn-info  btn-sm"><i class="fa fa-eye"></i> </a>';
             })
             ->rawColumns(['planning','view'])
                 ->make(true);
@@ -301,11 +301,11 @@ class PlanningController extends Controller
                 return '<a target="_blank"  href="' . route('planning.planningPdf', ['client' => $planning->client_id ,'planning' => $planning]) . '" class="btn btn-primary">Download</i> </a>';
             })
             ->editColumn('show', function ($planning) {
-                return '<a href="' . route('planning.show', $planning) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('planning.show', $planning) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
             })->editColumn('edit', function ($planning) {
-                return '<a href="' . route('planning.edit', $planning) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                return '<a href="' . route('planning.edit', $planning) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
             })->editColumn('delete', function ($planning) {
-                return '<div class="form-group" ><button class="btn btn-danger" onclick=deletePlanning('. $planning->id .')  ><i class="fa fa-trash"></i></a></div>';
+                return '<div class="form-group" ><button class="btn btn-danger  btn-sm" onclick=deletePlanning('. $planning->id .')  ><i class="fa fa-trash"></i></a></div>';
                   // return '<form method="POST"  onsubmit="return confirm("Are you sure want to delete the client?")" action="' . route('client.destroy',$client) .'">' . csrf_field() . method_field('DELETE') . '<div class="form-group"><button class="btn btn-danger" type="submit"><i class="fa fa-trash "></i></a></div></form> ';
                 
             })->rawColumns(['show', 'edit','delete','planning'])

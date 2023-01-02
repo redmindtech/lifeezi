@@ -45,19 +45,20 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="Name" class="form-label">Wake Up Time</label>
-                                    <input type="time" class="form-control" name="wake_up_time" value="{{old('wake_up_time') ?? ''}}"/>
-                                    @if($errors->has('wake_up_time'))
-                                            <div class="error">{{ $errors->first('wake_up_time') }}</div>
-                                  @endif
-                                </div>
-                                  <div class="col-md-6">
                                     <label  class="form-label">Bed Time</label>
                                     <input type="time" class="form-control" name="bed_time" value="{{old('bed_time') ?? ''}}"/>
                                     @if($errors->has('bed_time'))
                                             <div class="error">{{ $errors->first('bed_time') }}</div>
                                   @endif
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="Name" class="form-label">Wake Up Time</label>
+                                    <input type="time" class="form-control" name="wake_up_time" value="{{old('wake_up_time') ?? ''}}"/>
+                                    @if($errors->has('wake_up_time'))
+                                            <div class="error">{{ $errors->first('wake_up_time') }}</div>
+                                  @endif
+                                </div>
+                                  
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -68,8 +69,8 @@
                                   @endif
                                 </div>
                                   <div class="col-md-6">
-                                    <label  class="form-label">Walking Time/Steps</label>
-                                    <input type="number" class="form-control" name="steps" value="{{old('steps') ?? ''}}"/>
+                                    <label  class="form-label">Remarks</label>
+                                    <input type="text" class="form-control" name="steps" value="{{old('steps') ?? ''}}"/>
                                     @if($errors->has('steps'))
                                             <div class="error">{{ $errors->first('steps') }}</div>
                                   @endif
@@ -78,7 +79,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="Name" class="form-label">Water Intake (Litres)</label>
-                                    <input type="number" class="form-control" name="water_intake" value="{{old('water_intake') ?? ''}}"/>
+                                    <input type="number" class="form-control" name="water_intake" min="0.00" step="0.01" value="{{old('water_intake') ?? ''}}"/>
                                     @if($errors->has('water_intake'))
                                             <div class="error">{{ $errors->first('water_intake') }}</div>
                                   @endif

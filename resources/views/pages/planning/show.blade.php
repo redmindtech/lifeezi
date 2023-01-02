@@ -22,51 +22,55 @@
                     @include('include.observations')
                     @include('include.uploadlab')
                     @include('include.planning')
+                    
+                     <div class="card">
+                        <div class="card-body" style="height: auto;" >
                    <div class="row">
                     <div class="col-md-12">
-                      
-                        <form enctype="multipart/form-data" class="form-group" method="POST" action="{{ route('observation.store')}}" >
+                       <form enctype="multipart/form-data" class="form-group" method="POST" action="{{ route('observation.store')}}" >
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="Name" class="form-label">Plan Start Date</label>
                                     <p>{{old('plan_start_date') ?? dateFormat($planning->plan_start_date)}}</p>
                                 </div>
-                                  <div class="col-md-4">
+                                  <div class="col-md-3">
                                     <label  class="form-label">Plan End Date</label>
-                                      <p>{{old('plan_end_date') ?? $planning->plan_end_date}}</p>
+                                      <p>{{old('plan_end_date') ?? dateFormat($planning->plan_end_date)}}</p>
                                 </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                     <label  class="form-label">Mail Send Date</label>
-                                      <p>{{old('mail_send_date') ?? $planning->mail_send_date}}</p>
+                                      <p>{{old('mail_send_date') ?? dateFormat($planning->mail_send_date)}}</p>
+                                </div>
+                                 <div class="col-md-3">
+                                    <label>Explanation Date</label>
+                                    <p>{{old('explanation_date') ?? dateFormat($planning->explanation_date)}}</p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label>Explanation Date</label>
-                                    <p>{{old('explanation_date') ?? $planning->explanation_date}}</p>
-                                </div>
-                                     <div class="col-md-4">
+                               
+                                     <div class="col-md-3">
                                     <label>Objective</label>
                                     <p>{{old('objective') ?? $planning->objective}}</p>
                                 </div>
                 
                                
-                                 <div class="col-md-4">
+                                 <div class="col-md-3">
                                     <label for="Name" class="form-label">Activity</label>
                                     <p>{{old('exercise_routine') ?? $planning->exercise_routine}}</p>
                                 </div> 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <label for="Name" class="form-label">Comments/Note</label>
                                     <p>{{old('exercise_routine') ?? $planning->comments}}</p>
                                 </div> 
                             </div>
 
-                            <br/>
+                            <hr>
                             <div id="measurement_div">
                                 @if($planning->plan_types)
                                 @foreach ($planning->plan_types as $key => $plan_type )
-                                <div class="card">
-                                 <div class="card-body" style="height: 15vh;" >
+                               <div style="margin: 5px 0px">
+                                    <div class="card">
+                                    <div class="card-body" style="height: auto;" >
                                     <div class="row">
                                         <div class="col-md-3">
                                             <label class="form-label">Meal Cateory</label>
@@ -77,7 +81,7 @@
                                             <p>{{ $plan_type->food_details }}</p>
                                         </div>
                                          <div class="col-md-3">
-                                            <label class="form-label">Food Details</label>
+                                            <label class="form-label">Meal Time</label>
                                             <p>{{ $plan_type->meal_time }}</p>
                                         </div>
 
@@ -88,8 +92,8 @@
                                 @endforeach
                                 @endif
                             </div>
-                            <br/>
-                            <hr/>
+                            <br>
+                            <hr>
                         </form>
                     </div>
                    </div>

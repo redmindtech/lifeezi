@@ -153,7 +153,7 @@ class UploadLabController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UploadRequest $request, $uploadLab)
+    public function update(Request $request, $uploadLab)
     {
         try{
             $uploadLab = UploadLab::findOrFail($uploadLab);
@@ -241,9 +241,9 @@ class UploadLabController extends Controller
             })->editColumn('plan', function ($client) {
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('uploadlab', function ($client) {
-                return '<a href="' . route('upload.add', $client) . '" class="btn btn-primary"><i class="fa fa-file"></i> </a>';
+                return '<a href="' . route('upload.add', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-file"></i> </a>';
             })->editColumn('view', function ($client) {
-                    return '<a href="' . route('upload.list', $client) . '" class="btn btn-info"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('upload.list', $client) . '" class="btn btn-info  btn-sm"><i class="fa fa-eye"></i> </a>';
             })
             ->rawColumns(['uploadlab','view'])
                 ->make(true);
@@ -265,11 +265,11 @@ class UploadLabController extends Controller
                 })->editColumn('next_test_date', function ($upload) {
                 return dateFormat($upload->next_test_date);
             })->editColumn('show', function ($upload) {
-                return '<a href="' . route('upload.show', $upload) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('upload.show', $upload) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
             })->editColumn('edit', function ($upload) {
-                return '<a href="' . route('upload.edit', $upload) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                return '<a href="' . route('upload.edit', $upload) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
             })->editColumn('delete', function ($upload) {
-                return '<div class="form-group" ><button class="btn btn-danger" onclick=deleteUpload('. $upload->id .')  ><i class="fa fa-trash"></i></a></div>';
+                return '<div class="form-group" ><button class="btn btn-danger  btn-sm" onclick=deleteUpload('. $upload->id .')  ><i class="fa fa-trash"></i></a></div>';
                   // return '<form method="POST"  onsubmit="return confirm("Are you sure want to delete the client?")" action="' . route('client.destroy',$client) .'">' . csrf_field() . method_field('DELETE') . '<div class="form-group"><button class="btn btn-danger" type="submit"><i class="fa fa-trash "></i></a></div></form> ';
                 
             })->rawColumns(['show', 'edit','delete'])

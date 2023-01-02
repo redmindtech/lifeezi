@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Exception;
 use Yajra\DataTables\DataTables;
+use Illuminate\Http\Request;
 
 class OnboardingController extends Controller
 {
@@ -204,22 +205,22 @@ class OnboardingController extends Controller
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('onboarding', function ($client) {
                 if (!$client->onboarding ?? null)
-                return '<a href="' . route('onboarding.add', $client) . '" class="btn btn-primary"><i class="fa fa-plane"></i> </a>';
+                return '<a href="' . route('onboarding.add', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-plane"></i> </a>';
                 else
                     return dateFormat($client->onboarding->onboarding_date);
             })->editColumn('show', function ($client) {
                 if ($client->onboarding ?? null)
-                    return '<a href="' . route('onboarding.show', $client->onboarding) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('onboarding.show', $client->onboarding) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
                 else
                     return '-';
             })->editColumn('edit', function ($client) {
                 if ($client->onboarding ?? null)
-                    return '<a href="' . route('onboarding.edit', $client->onboarding) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                    return '<a href="' . route('onboarding.edit', $client->onboarding) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
                 else
                     return '-';
             })->editColumn('delete', function ($client) {
                 if ($client->onboarding ?? null)
-                    return  '<div class="form-group"><button class="btn btn-danger" onclick=deleteOnboarding('. $client->onboarding->id  .')><i class="fa fa-trash "></i></a></div></form> ';
+                    return  '<div class="form-group"><button class="btn btn-danger  btn-sm" onclick=deleteOnboarding('. $client->onboarding->id  .')><i class="fa fa-trash "></i></a></div></form> ';
                 else
                     return '-';
 

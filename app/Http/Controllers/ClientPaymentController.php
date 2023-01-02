@@ -132,7 +132,7 @@ class ClientPaymentController extends Controller
             })->editColumn('payment_date', function ($client) {
                 return $client->payment_date;
             })->editColumn('edit', function ($client) {
-                return '<a href="' . route('payment.edit', $client) . '" class="btn btn-primary"><i class="fa fa-user-pen "></i> </a>';
+                return '<a href="' . route('payment.edit', $client) . '" class="btn btn-primary btn-sm"><i class="fa fa-user-pen "></i> </a>';
             })
             ->rawColumns(['edit'])
                 ->make(true);

@@ -100,8 +100,8 @@
                             <br/>
                             <?php $meal_categories = old('meal_category') ?? null ?>
                             <div id="planning_div">
-                                   @if($planning->plan_types && !$meal_categories)
-                                @foreach ($planning->plan_types as $key => $plan_type )
+                                   @if($planning->plan_type && !$meal_categories)
+                                @foreach ($planning->plan_type as $key => $plan_type )
                                 <input type="hidden" style="display: none" value="{{$plan_type->id}}" name="ids[]" />
                                     
                             <div id="plantype_inputs{{$key}}" class="card plantype" style="margin:5px 0;">

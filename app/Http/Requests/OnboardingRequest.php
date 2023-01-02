@@ -26,7 +26,7 @@ class OnboardingRequest extends FormRequest
         return [
          'onboarding_date' => 'required|string',
             'date_of_birth' => 'required|string',
-            // 'occupation' => 'required|string',
+            'occupation' => 'required|string',
             'address' => 'required|string',
             'height' => 'required|numeric|between:0,299.99',
             'weight' => 'required|numeric|between:0,299.99',

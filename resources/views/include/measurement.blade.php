@@ -4,31 +4,32 @@
 <div class="card">
 <div class="card-body" style="height: auto;" >
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Measurement Date</label>
         <p>{{ dateFormat($measure->measurement_date) }}</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Next Measurement Date</label>
         <p>{{ dateFormat($measure->next_measurement_date) }}</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Comments</label>
         <p>{{ $measure->comments }}</p>
     </div> 
 </div>
+<hr>
  @if($measure->measurement_type)
  @foreach ($measure->measurement_type as $measurement_type )
  <div class="row">
-       <div class="col-md-4">
+       <div class="col-md-3">
         <label>Measurement Type</label>
         <p>{{ $measurement_type->measurement_type }}</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Value</label>
         <p>{{ $measurement_type->value }}</p>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Comments</label>
         <p>{{ $measurement_type->comments }}</p>
     </div>  

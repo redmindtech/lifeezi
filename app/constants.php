@@ -4,7 +4,8 @@ define('REFERENCE', [
     'google_page' => 'Google Page',
     'social_media' => 'Social Media',
     'website' => 'Website',
-    'reference' => 'Reference'
+    'reference' => 'Reference',
+    'others'=>'others'
 ]);
 
 define('JOURNEYSTATUS', [
@@ -123,7 +124,3 @@ define('MEALCATEGORY', [
     'Dinner1',
     'Dinner2',
 ]);
-
-
-
-

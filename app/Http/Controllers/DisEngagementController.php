@@ -120,9 +120,9 @@ class DisEngagementController extends Controller
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('disengagement', function ($client) {
                 if (!$client->disengagement ?? null)
-                return '<a href="' . route('disengagement.add', $client) . '" class="btn btn-primary"><i class="fa fa-thumbs-down"></i> </a>';
+                return '<a href="' . route('disengagement.add', $client) . '" class="btn btn-primary btn-sm"><i class="fa fa-thumbs-down"></i> </a>';
                 else {
-                  return '<a target="_blank"  href="' . route('disengagement.show', $client) . '" class="btn btn-primary">Download </a>';
+                  return '<a target="_blank"  href="' . route('disengagement.show', $client) . '" class="btn btn-danger btn-sm">Download </a>';
                 }
             })
             ->rawColumns(['disengagement'])

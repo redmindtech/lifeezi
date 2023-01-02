@@ -37,7 +37,7 @@ class ClientController extends Controller
                     $data['status'] = 'active';
             }
             
-            if($data['reference'] == 'reference'){
+            if($data['reference'] == 'reference'|| $data['reference'] =='others'){
                 $data['reference_input'] = $request->input('reference_input');
             } else {
             $data['reference_input'] = null;
@@ -186,11 +186,11 @@ class ClientController extends Controller
             })->editColumn('plan', function ($client) {
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('show', function ($client) {
-                return '<a href="' . route('client.show', $client) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('client.show', $client) . '" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>';
             })->editColumn('edit', function ($client) {
-                return '<a href="' . route('client.edit', $client) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                return '<a href="' . route('client.edit', $client) . '" class="btn btn-success btn-sm"> <i class="fa fa-user-pen "></i></a>';
             })->editColumn('delete', function ($client) {
-                return '<div class="form-group" ><button class="btn btn-danger" onclick=deleteClient('. $client->id .') data-id="'. $client->id . '" ><i class="fa fa-trash"></i></a></div>';
+                return '<div class="form-group" ><button class="btn btn-danger btn-sm" onclick=deleteClient('. $client->id .') data-id="'. $client->id . '" ><i class="fa fa-trash"></i></a></div>';
                   // return '<form method="POST"  onsubmit="return confirm("Are you sure want to delete the client?")" action="' . route('client.destroy',$client) .'">' . csrf_field() . method_field('DELETE') . '<div class="form-group"><button class="btn btn-danger" type="submit"><i class="fa fa-trash "></i></a></div></form> ';
                 
             })->rawColumns(['show', 'edit','delete'])

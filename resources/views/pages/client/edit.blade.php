@@ -85,12 +85,11 @@
                                          @foreach($data['transformation_plans'] as $value)
                                          @if($key ==$value->span)
                                          <?php $val = false ?>
-                                         @foreach($data['transformation_plans'] as $value)
+                                          @foreach($data['transformation_plans'] as $value)
                                          <option @if(($key ?? old('transformation_plan')) == $value->span ) selected @endif value="{{$value->span}}" >{{$value->name}}</option> 
-                                         @endforeach
+                                          @endforeach
                                          @endif
                                          @endforeach
-                                        
                                          @if($val)
                                          <option value ="{{ $key }}" selected>{{ $key }}</option>
                                          @endif
@@ -105,7 +104,7 @@
                             <div class="row" id="reference_div">
                                 <div class="col-md-6">
                                     <label for="reference" class="form-label">Enquiry Source</label>
-                                    <select class="form-control" name="reference" id="reference">
+                                    <select class="form-control" name="reference" id="reference" onchange=onChangeReference()>
                                         @if($data['reference'])
                                         <option value=''>--Select any one option --</option>
                                         @foreach ($data['reference'] as $key => $value )
@@ -119,7 +118,11 @@
                                 </div>
                                 @if($client->reference_input)
                                 <div class="col-md-6" id="reference_col_div">
+                                    @if($client->reference =="reference")
                                     <label for="reference_input" class="form-label">Reference Name</label>
+                                    @elseif($client->reference =="others")
+                                    <label for="reference_input" class="form-label">Others</label>
+                                    @endif
                                     <input type="text" name="reference_input" value="{{ $client->reference_input ?? old('reference_input')}}" class="form-control" />
                                 </div>
                                 @endif
@@ -164,14 +167,26 @@
              }
            }
             function onChangeReference() {
-            let value = $('#reference').find(':selected').val();
-             if(value == 'reference') {
+               
+                let value = $('#reference').find(':selected').val();
+             if(value == 'reference' ) {
+                $('#reference_col_div').remove();
                 $('#reference_div').append('<div id="reference_col_div" class="col-md-6">'
                     +'<label class="form-label">Reference Name<a style="text-decoration: none;color:red">*</a></label><input type="text" name="reference_input" class="form-control"  />'
                     +'</div>')
-             } else {
+                     
+             } 
+             else if(value == 'others') {
                 $('#reference_col_div').remove();
+                $('#reference_div').append('<div id="reference_col_div" class="col-md-6">'
+                    +'<label class="form-label">Others<a style="text-decoration: none;color:red">*</a></label><input type="text" name="reference_input"  class="form-control"  />'
+                    +'</div>')
              }
+             else {
+                $('#reference_col_div').remove();
+               
+             }
+
            }
 
                     $(document).ready(function() {

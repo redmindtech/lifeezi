@@ -10,7 +10,7 @@ class Client extends Model
 {
     use HasFactory,SoftDeletes;
 
-    const REQUEST_INPUTS = ['client_name', 'sex', 'mobile', 'landline', 'email', 'transformation_plan','reference','expiry_date','journey','comments','status'];
+    const REQUEST_INPUTS = ['client_name', 'sex', 'mobile', 'landline', 'email', 'transformation_plan','reference','reference_input','expiry_date','journey','comments','status'];
 
     protected $fillable = ['client_name', 'sex', 'mobile', 'landline', 'email', 'transformation_plan','transformation_input','reference_input','reference','expiry_date','journey','comments','status'];
 
@@ -56,7 +56,7 @@ class Client extends Model
         return $this->hasOne(ClientPayment::class);
     }
 
-    public function review(){
+    public function reviews(){
         return $this->hasMany(Review::class);
     }
 }

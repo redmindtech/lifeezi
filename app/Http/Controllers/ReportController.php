@@ -143,7 +143,7 @@ class ReportController extends Controller
             })->editColumn('plan', function ($client) {
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('show', function ($client) {
-                return '<a href="' . route('reports.show', $client) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('reports.show', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
             })->rawColumns(['show'])
                 ->make(true);
         } catch(Exception $e) {

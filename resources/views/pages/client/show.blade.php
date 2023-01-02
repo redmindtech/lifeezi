@@ -66,9 +66,13 @@
                                     <label for="reference" >Enquiry Source</label>
                                     <p>{{ucfirst(implode(' ', explode('_', $client->reference))) ?? old('reference') }}</p>
                                 </div>
-                                 @if($client->reference_input)
+                                  @if($client->reference_input)
                                 <div class="col-md-6" id="reference_col_div">
+                                    @if($client->reference == "reference")
                                     <label for="reference_input" >Reference Name</label>
+                                    @elseif($client->reference == "others")
+                                    <label for="reference_input" >Others</label>
+                                    @endif
                                     <p>{{ $client->reference_input ?? old('reference_input')}}</p>
                                 </div>
                                 @endif

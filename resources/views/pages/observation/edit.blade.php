@@ -69,8 +69,8 @@
                                   @endif
                                 </div>
                                   <div class="col-md-6">
-                                    <label  class="form-label">Walking Time/Steps</label>
-                                    <input type="number" class="form-control" name="steps" value="{{old('steps') ?? $observation->steps}}"/>
+                                    <label  class="form-label">Remarks</label>
+                                    <input type="text" class="form-control" name="steps" value="{{old('steps') ?? $observation->steps}}"/>
                                     @if($errors->has('steps'))
                                             <div class="error">{{ $errors->first('steps') }}</div>
                                   @endif

@@ -8,38 +8,38 @@
     @endif
 
     <div class="col-md-3">
-        <label class="form-label">OnBoarding Date</label>
+        <label>OnBoarding Date</label>
         <p>{{ dateFormat( $onboarding->onboarding_date ) }}</p>
     </div>
     <div class="col-md-3">
-        <label class="form-label">Target Days</label>
+        <label>Target Days</label>
         <p>{{ $onboarding->target_days }}</p>
     </div>
     <div class="col-md-3">
-        <label class="form-label">Date of birth</label>
+        <label>Date of birth</label>
         <p>{{ dateFormat($onboarding->date_of_birth) }}</p>
     </div>
     <div class="col-md-3">
-        <label class="form-label">Job Nature</label>
+        <label>Job Nature</label>
         <p>{{ $onboarding->occupation }}</p>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-3">
-        <label class="form-label">Location</label>
+        <label>Location</label>
         <p>{{  $onboarding->address  }}</p>
     </div>
     <div class="col-md-3">
-        <label class="form-label">Height</label>
+        <label>Height</label>
         <p>{{ $onboarding->height }}</p>
     </div>
     <div class="col-md-3">
-        <label class="form-label">Weight</label>
+        <label>Weight</label>
         <p>{{ $onboarding->weight }}</p>
     </div>
         <div class="col-md-3">
-        <label class="form-label">Form</label>
+        <label>Form</label>
         <p><a href="{{ url('/assets/uploads/'. $onboarding->upload_form)}}" download>Download</a></p>
     </div>
 </div>
@@ -47,20 +47,20 @@
 <div class="row">
 
     <div class="col-md-3">
-        <label class="form-label">Wellness Coach</label>
+        <label>Wellness Coach</label>
         <p>{{ $onboarding->coach }}</p>
     </div>
        <div class="col-md-3">
-        <label class="form-label">Past History</label>
+        <label>Past History</label>
         <p>{{ $onboarding->past_history }}</p>
     </div>
         
        <div class="col-md-3">
-        <label class="form-label">Comments</label>
+        <label>Comments</label>
         <p>{{ $onboarding->comments }}</p>
     </div>
           <div class="col-md-3">
-        <label class="form-label">Family Disease History</label>
+        <label>Family Disease History</label>
         <p>{{ $onboarding->family_disease_history }}</p>
     </div>
 </div>
@@ -69,11 +69,11 @@
  
             
        <div class="col-md-3">
-        <label class="form-label">Current Medication</label>
+        <label>Current Medication</label>
         <p>{{ $onboarding->current_medication }}</p>
     </div>
     <div class="col-md-3">
-        <label class="form-label">Objective Client</label>
+        <label>Objective Client</label>
         <p>{{ $onboarding->objective_client }}</p>
     </div>
     

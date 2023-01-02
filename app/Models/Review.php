@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Review extends Model
 {
     use HasFactory,SoftDeletes;
+    
+     
 
     const REQUEST_INPUTS = [
         'client_id',
@@ -18,6 +20,8 @@ class Review extends Model
         'client_concern',
         'area_need_to_focus'
     ];
+    
+    protected $table = 'reviews';
 
     protected $fillable =  [
         'client_id',
@@ -28,10 +32,7 @@ class Review extends Model
         'area_need_to_focus'
     ];
 
-    protected $table = 'reviews';
-
-
-
+   
     public function client(){
         return $this->belongsTo(Client::class);
     }

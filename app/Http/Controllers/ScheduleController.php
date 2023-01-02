@@ -162,22 +162,22 @@ class ScheduleController extends Controller
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('schedule', function ($client) {
                 if (!$client->schedule_assement ?? null)
-                return '<a href="' . route('schedule.add', $client) . '" class="btn btn-primary"><i class="fa fa-clock"></i> </a>';
+                return '<a href="' . route('schedule.add', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-clock"></i> </a>';
                 else
                     return Carbon::parse($client->schedule_assement->schedule_date_time)->format('d-M-Y g:i A');
             })->editColumn('show', function ($client) {
                 if ($client->schedule_assement ?? null)
-                    return '<a href="' . route('schedule.show', $client->schedule_assement->id) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('schedule.show', $client->schedule_assement->id) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
                 else
                     return '-';
             })->editColumn('edit', function ($client) {
                 if ($client->schedule_assement ?? null)
-                    return '<a href="' . route('schedule.edit', $client->schedule_assement->id) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                    return '<a href="' . route('schedule.edit', $client->schedule_assement->id) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
                 else
                     return '-';
             })->editColumn('delete', function ($client) {
                 if ($client->schedule_assement ?? null)
-                    return '<div class="form-group"><button class="btn btn-danger" onclick="deleteSchedule('. $client->schedule_assement->id  .')" type="submit"><i class="fa fa-trash "></i></a></div> ';
+                    return '<div class="form-group"><button class="btn btn-danger  btn-sm" onclick="deleteSchedule('. $client->schedule_assement->id  .')" type="submit"><i class="fa fa-trash "></i></a></div> ';
                 else
                     return '-';
 

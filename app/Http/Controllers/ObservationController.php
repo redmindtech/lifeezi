@@ -226,9 +226,9 @@ class ObservationController extends Controller
             })->editColumn('plan', function ($client) {
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('observation', function ($client) {
-                return '<a href="' . route('observation.add', $client) . '" class="btn btn-primary"><i class="fa fa-tower-observation"></i> </a>';
+                return '<a href="' . route('observation.add', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-tower-observation"></i> </a>';
             })->editColumn('view', function ($client) {
-                    return '<a href="' . route('observation.list', $client) . '" class="btn btn-info"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('observation.list', $client) . '" class="btn btn-info  btn-sm"><i class="fa fa-eye"></i> </a>';
             })
             ->rawColumns(['observation','view'])
                 ->make(true);
@@ -255,11 +255,11 @@ class ObservationController extends Controller
             })->editColumn('bed_time', function ($observation) {
                 return getTime($observation->bed_time);
             })->editColumn('show', function ($observation) {
-                return '<a href="' . route('observation.show', $observation) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('observation.show', $observation) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
             })->editColumn('edit', function ($observation) {
-                return '<a href="' . route('observation.edit', $observation) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                return '<a href="' . route('observation.edit', $observation) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
             })->editColumn('delete', function ($observation) {
-                return '<div class="form-group" ><button class="btn btn-danger" onclick=deleteObservation('. $observation->id .')  ><i class="fa fa-trash"></i></a></div>';
+                return '<div class="form-group" ><button class="btn btn-danger  btn-sm" onclick=deleteObservation('. $observation->id .')  ><i class="fa fa-trash"></i></a></div>';
                   // return '<form method="POST"  onsubmit="return confirm("Are you sure want to delete the client?")" action="' . route('client.destroy',$client) .'">' . csrf_field() . method_field('DELETE') . '<div class="form-group"><button class="btn btn-danger" type="submit"><i class="fa fa-trash "></i></a></div></form> ';
                 
             })->rawColumns(['show', 'edit','delete'])

@@ -133,9 +133,10 @@ class FollowUpController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, FollowUp $followUp)
+    public function update(Request $request, $followUp)
     {
         try{
+            $followUp=FollowUp::findOrFail($followUp);
             $followUp->update($request->only(FollowUp::REQUEST_INPUTS));
             return redirect()->route('followup.index')->with('success', 'FollowUp Updated Successfully');
         }catch(Exception $e) {
@@ -180,9 +181,9 @@ class FollowUpController extends Controller
             })->editColumn('plan', function ($client) {
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('follow_up', function ($client) {
-                return '<a href="' . route('followup.add', $client) . '" class="btn btn-primary"><i class="fa fa-layer-group"></i> </a>';
+                return '<a href="' . route('followup.add', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-layer-group"></i> </a>';
             })->editColumn('view', function ($client) {
-                    return '<a href="' . route('followUpList', $client) . '" class="btn btn-info"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('followUpList', $client) . '" class="btn btn-info  btn-sm"><i class="fa fa-eye"></i> </a>';
             })
             ->rawColumns(['follow_up','view'])
                 ->make(true);
@@ -211,11 +212,11 @@ class FollowUpController extends Controller
                 return ucfirst($followup->deviation);
             })
             ->editColumn('show', function ($followup) {
-                return '<a href="' . route('followup.show', $followup) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                return '<a href="' . route('followup.show', $followup) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
             })->editColumn('edit', function ($followup) {
-                return '<a href="' . route('followup.edit', $followup) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                return '<a href="' . route('followup.edit', $followup) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
             })->editColumn('delete', function ($followup) {
-                return '<div class="form-group" ><button class="btn btn-danger" onclick=deleteFollowUp('. $followup->id .')  ><i class="fa fa-trash"></i></a></div>';
+                return '<div class="form-group" ><button class="btn btn-danger  btn-sm" onclick=deleteFollowUp('. $followup->id .')  ><i class="fa fa-trash"></i></a></div>';
                   // return '<form method="POST"  onsubmit="return confirm("Are you sure want to delete the client?")" action="' . route('client.destroy',$client) .'">' . csrf_field() . method_field('DELETE') . '<div class="form-group"><button class="btn btn-danger" type="submit"><i class="fa fa-trash "></i></a></div></form> ';
                 
             })->rawColumns(['show', 'edit','delete'])
@@ -226,4 +227,3 @@ class FollowUpController extends Controller
         }
     }
 }
-

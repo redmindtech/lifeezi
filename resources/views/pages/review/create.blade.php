@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<div class="py-6" style="width: 100%;margin:0px;">
+<div class="py-6" style="width: 100%;margin:12px;">
         <div class="col-md-12">
             <div class="card bg-card">
                 <div class="card-body">
@@ -53,8 +53,8 @@
                                     <textarea name="client_progress" class="form-control">{{old('client_progress') ?? ''}}</textarea>
                                 </div>
                                    <div class="col-md-6">
-                                    <label for="client_conerns" class="form-label">Client Conerns</label>
-                                    <textarea name="client_conerns" class="form-control">{{old('client_conerns') ?? ''}}</textarea>
+                                    <label for="client_conerns" class="form-label">Client Conern</label>
+                                    <textarea name="client_conern" class="form-control">{{old('client_conern') ?? ''}}</textarea>
                                 </div>
                             </div>
                             <div class="row">

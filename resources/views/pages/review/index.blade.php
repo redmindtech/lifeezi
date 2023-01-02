@@ -14,13 +14,13 @@
                     </div>
                    <div class="row">
                     <div class="table-responsive">
-                        <table class="table table-striped table-sm" id="customer_datatable">
+                        <table class="table table-striped " id="customer_datatable">
                             <thead>
                                 <tr>
                                     <th>NAME</th>
                                     <th>SEX</th>
                                     <th>PHONE</th>
-                                    <th>OBJECTIVES</th>
+                                    <th>PRIMARY COMPLIANT</th>
                                     <th>REVIEW</th>
                                     <th>VIEW</th>
                                 </tr>

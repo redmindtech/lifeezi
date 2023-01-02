@@ -19,24 +19,25 @@
                     @include('include.client')
                     @include('include.onboarding')
                     @include('include.measurement')
+                    <div style="margin: 5px 0px">
+                        <div class="card">
+                            <div class="card-body" style="height: auto;" >
                    <div class="row">
                     <div class="col-md-12">
                         @if($measurement)
                         <form enctype="multipart/form-data" class="form-group" method="POST" action="{{ route('measurement.store')}}" >
                             <div class="row">
-                                <div class="col-md-6">
-                                    <label for="Name" class="form-label">Measurement Date<a
-                                                    style="text-decoration: none;color:red">*</a></label>
+                                <div class="col-md-3">
+                                    <label for="Name" class="form-label">Measurement Date</label>
                                     <p>{{old('measurement_date') ?? dateFormat($measurement->measurement_date)}}</p>
                                 </div>
-                                  <div class="col-md-6">
-                                    <label  class="form-label">Next Measurement Date<a
-                                                    style="text-decoration: none;color:red">*</a></label>
+                                  <div class="col-md-3">
+                                    <label  class="form-label">Next Measurement Date</label>
                                       <p>{{old('next_measurement_date') ?? dateFormat($measurement->next_measurement_date)}}</p>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
+                            <!--</div>-->
+                            <!--<div class="row">-->
+                                <div class="col-md-3">
                                     <label for="comments" class="form-label">Comments</label>
                                     <p>{{old('comments') ?? $measurement->comments}}</p>
                                 </div>
@@ -46,17 +47,17 @@
                                 @if($measurement->measurement_type)
                                 @foreach ($measurement->measurement_type as $key => $measurement_type )
                                 <div class="card" style="margin:5px 0;">
-                                 <div class="card-body" style="height: 15vh;" >
+                                 <div class="card-body" style="height: auto;" >
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label class="form-label">Measurement Type</label>
                                             <p>{{ $measurement_type->measurement_type }}</p>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label class="form-label">Value</label>
                                             <p>{{ $measurement_type->value }}</p>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <label class="form-label">Comments</label>
                                             <p tooltip="{{$measurement_type->comments }}">{{ $measurement_type->comments }}</p>
                                         </div>

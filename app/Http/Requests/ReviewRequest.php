@@ -27,7 +27,7 @@ class ReviewRequest extends FormRequest
     {
         return [
             'review_date' => new ReviewDate(request('client_id'),request('next_review_date')),
-            'next_review_date' => new ReviewNextDate(request('client_id')),
+            'next_review_date' => 'required',
         ];
     }
 }

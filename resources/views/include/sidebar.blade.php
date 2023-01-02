@@ -77,7 +77,7 @@
           <li class="nav-item">
           <a class="nav-link bg-sidebar-link @if(in_array($activeName, FOLLOWUP )) active @endif" aria-current="page">
           <span class="ml-3">
-          <i class="fa fa-ruler-vertical"></i></span>
+          <i class="fa fa-layer-group"></i></span>
           <span class="bg-nav-p"> Follow Up<span>
           </li></a>
           </summary>
@@ -158,5 +158,6 @@
       </li>
     </details>
     </ul>
-    <div style="font-size:12px">Powered by  <a href="https://redmindtechnologies.com/"  target="_blank" style="text-decoration: none;color:red" target="_blank">{{__("RedMind Technologies")}}</a></div>
+    <div style="font-size:13px">Powered by <a href="https://redmindtechnologies.com/"  target="_blank" style="text-decoration: none;color:red" target="_blank">{{__("RedMind Technologies")}}</a>
+</div>
   </div>

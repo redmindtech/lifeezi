@@ -49,7 +49,7 @@
                                     <p>{{old('exercise_routine') ?? $observation->exercise_routine}}</p>
                                 </div>
                                   <div class="col-md-6">
-                                    <label  class="form-label">Steps</label>
+                                    <label  class="form-label">Remarks</label>
                                       <p>{{old('steps') ?? $observation->steps}}</p>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                         </div>
                                         <div class="col-md-3">
                                             <label class="form-label">Meal Time</label>
-                                            <p>{{ $observation_type->meal_time }}</p>
+                                            <p>{{ getTime($observation_type->meal_time) }}</p>
                                         </div>
                                           <div class="col-md-3">
                                             <label class="form-label">Meal</label>

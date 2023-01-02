@@ -23,7 +23,7 @@
                             @csrf
                             <input type="hidden" style="display: none" name="client_id" value="{{ $data['client']['id']}}" />
                             <div class="row" id="disengagement_div">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="target_days" class="form-label">Date<a
                                                     style="text-decoration: none;color:red">*</a></label>
                                 <input class="form-control" name="date" type="date" value="{{old('date') ?? \Carbon\Carbon::today()->format('Y-m-d')}}" />
@@ -31,7 +31,7 @@
                                             <div class="error">{{ $errors->first('date') }}</div>
                                  @endif
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="Name" class="form-label">Disengagement Type<a
                                                     style="text-decoration: none;color:red">*</a></label>
                                     <select class="form-control" id="disengagement" onchange=selectchange() name="disengagement_type" value="{{old('disengagement_type') ?? ''}}">

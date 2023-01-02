@@ -175,22 +175,22 @@ class SummaryController extends Controller
                 return ucfirst(implode(' ', explode('_', $client->transformation_plan)));
             })->editColumn('summary', function ($client) {
                 if (!$client->summary ?? null)
-                return '<a href="' . route('summary.add', $client) . '" class="btn btn-primary"><i class="fa fa-book"></i> </a>';
+                return '<a href="' . route('summary.add', $client) . '" class="btn btn-primary  btn-sm"><i class="fa fa-book"></i> </a>';
                 else
                     return $client->summary->summary_status;
             })->editColumn('show', function ($client) {
                 if ($client->summary ?? null)
-                    return '<a href="' . route('summary.show', $client->summary->id) . '" class="btn btn-primary"><i class="fa fa-eye"></i> </a>';
+                    return '<a href="' . route('summary.show', $client->summary->id) . '" class="btn btn-primary  btn-sm"><i class="fa fa-eye"></i> </a>';
                 else
                     return '-';
             })->editColumn('edit', function ($client) {
                 if ($client->summary ?? null)
-                    return '<a href="' . route('summary.edit', $client->summary->id) . '" class="btn btn-success"> <i class="fa fa-user-pen "></i></a>';
+                    return '<a href="' . route('summary.edit', $client->summary->id) . '" class="btn btn-success  btn-sm"> <i class="fa fa-user-pen "></i></a>';
                 else
                     return '-';
             })->editColumn('delete', function ($client) {
                 if ($client->summary ?? null)
-                return '<div class="form-group"><button class="btn btn-danger" onclick="deleteSummary('. $client->summary->id .')"><i class="fa fa-trash "></i></a></div></form> ';
+                return '<div class="form-group"><button class="btn btn-danger  btn-sm" onclick="deleteSummary('. $client->summary->id .')"><i class="fa fa-trash "></i></a></div></form> ';
                 else
                     return '-';
 

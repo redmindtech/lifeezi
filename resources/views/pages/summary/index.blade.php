@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-<div class="py-6" style="width: 100%;margin:12px;">
+<div class="py-6" style="width:100%;margin:0px auto;">
         <div class="col-md-12">
             <div class="card bg-card">
                 <div class="card-body">
@@ -15,7 +15,7 @@
                     </div>
                    <div class="row">
                     <div class="table-responsive">
-                        <table class="table table-striped table-sm" id="customer_datatable">
+                        <table class="table table-striped " id="customer_datatable">
                             <thead>
                                 <tr>
                                     <th>NAME</th>

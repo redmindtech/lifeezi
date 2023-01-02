@@ -41,6 +41,7 @@
                                         <option value="Joining" @if((old('summary_status') ?? $summary->summary_status) == 'Joining') selected @endif>Joining</option>
                                         <option value="NotJoining"  @if((old('summary_status') ?? $summary->summary_status) == 'NotJoining') selected @endif >Not Joining</option>
                                         <option value="InDilemma"  @if((old('summary_status') ?? $summary->summary_status) == 'InDilemma') selected @endif >In Dilemma</option>
+                                        <option value="Others"  @if((old('summary_status') ?? $summary->summary_status) == 'Others') selected @endif >Others</option>
                                     </select>
                                      @if($errors->has('summary_status'))
                                        <div class="error">{{ $errors->first('summary_status') }}</div>

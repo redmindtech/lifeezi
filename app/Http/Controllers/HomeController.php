@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\ClientPayment;
+use App\Models\FollowUp;
+use App\Models\Summary;
 use FFI\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -31,7 +33,7 @@ class HomeController extends Controller
     public function index()
     {
         try {
-            $resultMonth = CarbonPeriod::create('2022-01-01', '1 month', Carbon::now());
+              $resultMonth = CarbonPeriod::create('2022-01-01', '1 month', Carbon::now());
             $resultYear = CarbonPeriod::create('2022-01-01', '1 year', Carbon::now());
             $clientCount = Client::count();
             $clientInfoMonth = DB::table('clients')
@@ -80,13 +82,19 @@ class HomeController extends Controller
 
             }
             $clientPayments = ClientPayment::where('payment_status', 'pending')->with('client')->get();
+            $futureClients = Client::with(['summary', 'schedule_assement'])->get();
+            $InDilemma = Summary::where('summary_status', 'InDilemma')->get();
+            $followUps = FollowUp::where('follow_up', 'no')->with('client')->get();
             $data = array(
                 'month' => $clientMonth,
                 'client' => $monthUser,
                 'year' => $clientYear,
                 'yearUser' => $yearUser,
                 'clientCount' => $clientCount,
-                'clientPayments' => $clientPayments
+                'clientPayments' => $clientPayments,
+                'InDilemma' => $InDilemma,
+                'followUps' => $followUps,
+                'futureClients' => $futureClients
             );
             
             return view('home')->with($data);
